@@ -1,29 +1,16 @@
 # SDLPoP Pocket source and user-data preparation
 
-> **Real-time music test branch:** This branch uses the faster Nuked-OPL3-fast emulator to synthesize the game’s AdLib music during play. A user reported smooth music and gameplay on an Analogue Pocket. The test installation still declares `popmusic.dat` in its data slots, so follow the existing preparation instructions below; removing that requirement needs further device testing. The `main` branch retains the previously tested pre-rendered implementation.
-
-This archive contains the modified SDLPoP engine, user-data tools, and the openfpgaOS SDK files needed for the desktop renderer and Pocket app build. It does not contain the DOS game files or rendered music.
+This source includes the SDLPoP engine, user-data tool, and openfpgaOS SDK. You must provide your own compatible DOS game data. Music is synthesized in real time from that data.
 
 ## Prepare your game files
 
-Requirements: a compatible DOS Prince of Persia directory; Python 3; a C compiler; `make`; and SDL2 development libraries including `sdl2-config`. On macOS, the compiler's Xcode Command Line Tools license must already be accepted and SDL2 can be installed separately, for example with Homebrew. On Debian/Ubuntu the packages `build-essential python3 libsdl2-dev` supply these prerequisites.
-
-After installing the binary package onto the SD card, run:
+Requirements: Python 3 and a compatible DOS Prince of Persia game directory. After installing the binary package onto the SD card, run:
 
 ```sh
 ./prepare-game.sh "/path/to/Prince of Persia DOS files" "/path/to/Pocket/Assets/sdlpop/common"
 ```
 
-The tool bundles DAT files into `popdata.dat`, then compiles a desktop renderer and locally renders the game's own AdLib music into `popmusic.dat`. It refuses to overwrite existing data files. The output is derived from your game files; do not include it in the engine release.
-
-Alternatively, where Docker is installed, from this source directory:
-
-```sh
-docker build -f Dockerfile.music -t sdlpop-music .
-docker run --rm -v "/absolute/path/to/dos-game:/game:ro" -v "/absolute/path/to/output:/out" sdlpop-music /game /out
-```
-
-Copy the two generated `.dat` files into `Assets/sdlpop/common` on the Pocket SD card. The container does not receive your game files until the run step. Docker paths containing colons may require platform-specific handling.
+The tool bundles your DAT files into `popdata.dat`. It refuses to overwrite an existing file. The game data remain with their respective owners; do not include the resulting bundle in an engine release.
 
 ## Rebuilding
 
@@ -33,6 +20,6 @@ License and provenance details are in the included notice and license files and 
 
 ## Project status
 
-This port has been tested on an Analogue Pocket with a compatible DOS copy supplied by the player. It starts directly from openFPGA; movement, sound effects, music and in-game quicksave were tested. This branch plays AdLib music through real-time OPL emulation; its current test configuration still requires the generated music file to be present. It does not currently implement Pocket sleep or system save states.
+This port has been tested on an Analogue Pocket with a compatible DOS copy supplied by the player. It starts directly from openFPGA; movement, sound effects, music and in-game quicksave were tested. This branch plays AdLib music through a DOSBox-derived real-time OPL emulator. The DBOPL configuration without a pre-rendered music file has been tested on one Pocket; broader compatibility and full playthroughs remain unverified. It does not currently implement Pocket sleep or system save states.
 
 The repository deliberately omits game assets and the optional SC-55 sound bank. Review `openfpgaOS-core-NOTICE.txt` and upstream component licenses before distributing compiled runtime artifacts. See `PLAYING.md` and `PROVENANCE.txt` for details and credits.

@@ -27,7 +27,11 @@ CREDITS:
 */
 
 #include "common.h"
+#if defined(POCKET_PORT) && !defined(OF_PC)
+#include "pocket_dbopl.h"
+#else
 #include "opl3.h"
+#endif
 #include "math.h"
 
 #define MAX_MIDI_CHANNELS 16
@@ -605,14 +609,7 @@ void midi_callback(void *userdata, Uint8 *stream, int len) {
 }
 
 
-#if defined(POCKET_PORT) && !defined(OF_PC)
-#include "pocket_music.h"
-#endif
 void stop_midi() {
-#if defined(POCKET_PORT) && !defined(OF_PC) && !defined(REALTIME_OPL)
-    pocket_music_stop();
-    return;
-#endif
 	if (!midi_playing) return;
 //	SDL_PauseAudio(1);
 	SDL_LockAudio();
@@ -649,10 +646,6 @@ void init_midi() {
 }
 
 void play_midi_sound(sound_buffer_type* buffer) {
-#if defined(POCKET_PORT) && !defined(OF_PC) && !defined(REALTIME_OPL)
-    if (pocket_music_play(buffer) == 0) { init_digi(); SDL_PauseAudio(0); }
-    return;
-#endif
 	stop_midi();
 	if (buffer == NULL) return;
 	init_digi();
@@ -687,8 +680,5 @@ void play_midi_sound(sound_buffer_type* buffer) {
 	ticks_per_beat = parsed_midi.ticks_per_beat;
 	mixing_freq = digi_audiospec->freq;
 	midi_playing = 1;
-#if defined(OF_PC) && defined(POCKET_PORT)
-    if (!getenv("SDLPOP_RENDER_MUSIC"))
-#endif
 	SDL_PauseAudio(0);
 }
