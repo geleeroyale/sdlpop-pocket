@@ -1,0 +1,19 @@
+# User-supplied game data, saves and rendered music must not be committed.
+*.dat
+*.DAT
+*.sav
+*.SAV
+*.ofsf
+*.ogg
+*.mid
+*.wav
+*.pak
+
+# Local build products and runtime artifacts
+.obj/
+build/
+runtime/
+app_pc
+*.o
+.DS_Store
+._*

@@ -1,0 +1,67 @@
+{
+  "instance": {
+    "magic": "APF_VER_1",
+    "data_slots": [
+      {
+        "id": 1,
+        "filename": "os.bin"
+      },
+      {
+        "id": 2,
+        "filename": "sdlpop.ini"
+      },
+      {
+        "id": 3,
+        "filename": "sdlpop.elf"
+      },
+      {
+        "id": 4,
+        "filename": "popdata.dat"
+      },
+      {
+        "id": 5,
+        "filename": "popmusic.dat"
+      },
+      {
+        "id": 10,
+        "filename": "QUICKSAVE.SAV"
+      },
+      {
+        "id": 11,
+        "filename": "PRINCE.SAV"
+      },
+      {
+        "id": 12,
+        "filename": "sdlpop_2.sav"
+      },
+      {
+        "id": 13,
+        "filename": "sdlpop_3.sav"
+      },
+      {
+        "id": 14,
+        "filename": "sdlpop_4.sav"
+      },
+      {
+        "id": 15,
+        "filename": "sdlpop_5.sav"
+      },
+      {
+        "id": 16,
+        "filename": "sdlpop_6.sav"
+      },
+      {
+        "id": 17,
+        "filename": "sdlpop_7.sav"
+      },
+      {
+        "id": 18,
+        "filename": "sdlpop_8.sav"
+      },
+      {
+        "id": 19,
+        "filename": "sdlpop_9.sav"
+      }
+    ]
+  }
+}

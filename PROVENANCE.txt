@@ -1,0 +1,12 @@
+SDLPoP engine: https://github.com/NagyD/SDLPoP
+Commit 3c5add5fb7f83d4ceb542823ab66d00146c4271b. Original upstream source under GPL-3.0-or-later; port-specific additions and changes are in src/sdlpop. Existing per-file third-party notices are retained.
+
+openfpgaOS SDK: https://github.com/openfpgaOS/openfpgaSDK
+Commit a408ddc12aed0dfaa4aa22c06af82f829db77126. SDK code and bundled musl headers/libraries are in src/sdk; its NOTICE and license are included. musl 1.2.5 source and the SDK's musl build/patch script are included separately.
+
+Prebuilt Pocket runtime: https://github.com/openfpgaOS/openfpgaCore
+Commit 618a3eb985759a4154115109c2c8036271252888, from the SDK runtime/MANIFEST. The repository uses submodules; obtain the exact source and pinned submodules when rebuilding the FPGA and runtime. Its NOTICE is included. These runtime binaries include third-party materials under their respective terms; review that NOTICE and applicable licenses before public distribution.
+
+The release binary excludes the SC-55 sample bank supplied by the SDK because the port uses pre-rendered user-provided game music and does not need that bank. No Prince of Persia game assets or rendered music are included in this source release.
+
+A separate openfpgaOS-core-source archive is supplied with the release candidate. It contains the checked-out runtime revision and its pinned submodule working trees, with Git administrative data and unused .ofsf sound-bank files omitted.
