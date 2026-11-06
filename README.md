@@ -1,5 +1,7 @@
 # SDLPoP Pocket source and user-data preparation
 
+> **Real-time music test branch:** This branch uses the faster Nuked-OPL3-fast emulator to synthesize the game’s AdLib music during play. A user reported smooth music and gameplay on an Analogue Pocket. The test installation still declares `popmusic.dat` in its data slots, so follow the existing preparation instructions below; removing that requirement needs further device testing. The `main` branch retains the previously tested pre-rendered implementation.
+
 This archive contains the modified SDLPoP engine, user-data tools, and the openfpgaOS SDK files needed for the desktop renderer and Pocket app build. It does not contain the DOS game files or rendered music.
 
 ## Prepare your game files
@@ -31,6 +33,6 @@ License and provenance details are in the included notice and license files and 
 
 ## Project status
 
-This port has been tested on an Analogue Pocket with a compatible DOS copy supplied by the player. It starts directly from openFPGA; movement, sound effects, music and in-game quicksave were tested. It uses pre-rendered music generated locally from the player's game files. It does not currently implement Pocket sleep or system save states. A lighter real-time AdLib playback path is an area for future work.
+This port has been tested on an Analogue Pocket with a compatible DOS copy supplied by the player. It starts directly from openFPGA; movement, sound effects, music and in-game quicksave were tested. This branch plays AdLib music through real-time OPL emulation; its current test configuration still requires the generated music file to be present. It does not currently implement Pocket sleep or system save states.
 
 The repository deliberately omits game assets and the optional SC-55 sound bank. Review `openfpgaOS-core-NOTICE.txt` and upstream component licenses before distributing compiled runtime artifacts. See `PLAYING.md` and `PROVENANCE.txt` for details and credits.

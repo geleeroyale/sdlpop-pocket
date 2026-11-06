@@ -28,7 +28,7 @@ OUT       = $(ROOT)/build/$(TARGET)/$(APP)
 RUNTIME   = $(ROOT)/runtime
 
 SRCS     = $(wildcard *.c)
-CFLAGS   += -I. -D_GNU_SOURCE=1 -DPOCKET_PORT=1
+CFLAGS   += -I. -D_GNU_SOURCE=1 -DPOCKET_PORT=1 -DREALTIME_OPL=1
 SRCS_CXX = $(wildcard *.cpp)
 
 # Data files bundled into the per-target deliverable (override per core).

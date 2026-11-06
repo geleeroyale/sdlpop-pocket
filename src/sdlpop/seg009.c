@@ -2119,7 +2119,7 @@ void audio_callback(void* userdata, Uint8* stream_orig, int len_orig) {
 	// Note: music sounds and digi sounds are allowed to play simultaneously (will be blended together)
 	// I.e., digi sounds and music will not cut each other short.
 	if (midi_playing) {
-#if defined(POCKET_PORT) && !defined(OF_PC)
+#if defined(POCKET_PORT) && !defined(OF_PC) && !defined(REALTIME_OPL)
         pocket_music_mix(stream, len);
 #else
 		midi_callback(userdata, stream, len);

@@ -609,7 +609,7 @@ void midi_callback(void *userdata, Uint8 *stream, int len) {
 #include "pocket_music.h"
 #endif
 void stop_midi() {
-#if defined(POCKET_PORT) && !defined(OF_PC)
+#if defined(POCKET_PORT) && !defined(OF_PC) && !defined(REALTIME_OPL)
     pocket_music_stop();
     return;
 #endif
@@ -649,7 +649,7 @@ void init_midi() {
 }
 
 void play_midi_sound(sound_buffer_type* buffer) {
-#if defined(POCKET_PORT) && !defined(OF_PC)
+#if defined(POCKET_PORT) && !defined(OF_PC) && !defined(REALTIME_OPL)
     if (pocket_music_play(buffer) == 0) { init_digi(); SDL_PauseAudio(0); }
     return;
 #endif
