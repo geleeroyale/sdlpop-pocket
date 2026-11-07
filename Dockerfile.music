@@ -1,8 +1,0 @@
-# Optional isolated desktop renderer; user game files are mounted at runtime.
-FROM ubuntu:24.04
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends build-essential python3 pkg-config libsdl2-dev && rm -rf /var/lib/apt/lists/*
-COPY . /sdlpop-source
-WORKDIR /sdlpop-source
-RUN make -C src/sdlpop USE_SDK_CONTAINER=0 app_pc
-ENTRYPOINT ["/sdlpop-source/prepare-game.sh"]
