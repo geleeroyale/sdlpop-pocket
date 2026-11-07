@@ -22,7 +22,8 @@ void pocket_audio_pump(void) {
     in_pump = 1;
     int available = of_audio_free();
     int queued = capacity - available;
-    int frames = 2048 - (queued > 0 ? queued : 0);
+    /* Keep approximately 46 ms queued at the 22050 Hz stream rate. */
+    int frames = 1024 - (queued > 0 ? queued : 0);
     if (frames > available) frames = available;
     int16_t samples[512 * 2];
     while (frames > 0 && !paused) {

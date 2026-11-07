@@ -31,10 +31,10 @@ int main(void) {
     assert(pocket_blit_mono(&glyph,&dst,0,0,99)==0 && out[0]==7 && out[1]==99 && out[2]==99 && out[3]==7);
     out[0]=out[1]=out[2]=out[3]=7; dst.clip_rect=(SDL_Rect){1,0,1,2};
     assert(pocket_blit_mono(&glyph,&dst,0,0,99)==0 && out[0]==7 && out[1]==99 && out[2]==7 && out[3]==7);
-    SDL_AudioSpec spec={44100,AUDIO_S16SYS,2,callback,NULL};
-    assert(pocket_audio_open(&spec,NULL)==0 && rate==44100); pocket_audio_pause(0); pocket_audio_pump();
-    assert(queued==2048 && calls==4); pocket_audio_pump(); assert(queued==2048 && calls==4);
-    queued-=512; pocket_audio_pump(); assert(queued==2048 && calls==5);
+    SDL_AudioSpec spec={22050,AUDIO_S16SYS,2,callback,NULL};
+    assert(pocket_audio_open(&spec,NULL)==0 && rate==22050); pocket_audio_pause(0); pocket_audio_pump();
+    assert(queued==1024 && calls==2); pocket_audio_pump(); assert(queued==1024 && calls==2);
+    queued-=512; pocket_audio_pump(); assert(queued==1024 && calls==3);
     pocket_audio_pause(1); queued=0; pocket_audio_pump(); assert(queued==0);
     assert(pocket_assets_init()==0);
     FILE *f = pocket_open_dat("prince.dat"); assert(f); unsigned char bytes[6]; assert(fread(bytes,1,6,f)==6); fclose(f);

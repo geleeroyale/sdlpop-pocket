@@ -1898,7 +1898,12 @@ int digi_remaining_length = 0;
 // The properties of the audio device.
 SDL_AudioSpec* digi_audiospec = NULL;
 // The desired samplerate. Everything will be resampled to this.
+#if defined(POCKET_PORT) && !defined(OF_PC)
+/* Reduce synthesis and uncached audio-ring writes; Pocket mixer resamples. */
+const int digi_samplerate = 22050;
+#else
 const int digi_samplerate = 44100;
+#endif
 
 void stop_digi(void) {
 //	SDL_PauseAudio(1);
