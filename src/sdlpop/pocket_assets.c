@@ -15,6 +15,7 @@ static uint32_t get_u32(const unsigned char *p) {
 int pocket_assets_init(void) {
 #ifndef OF_PC
     of_file_slot_register(4, "popdata.dat");
+    of_file_slot_register(5, "popmusic.dat");
 #endif
     FILE *f = fopen("popdata.dat", "rb");
     if (!f) return -1;

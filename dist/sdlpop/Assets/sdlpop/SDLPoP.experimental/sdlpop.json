@@ -19,6 +19,10 @@
         "filename": "popdata.dat"
       },
       {
+        "id": 5,
+        "filename": "popmusic.dat"
+      },
+      {
         "id": 10,
         "filename": "QUICKSAVE.SAV"
       },

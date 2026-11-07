@@ -43,6 +43,11 @@ int main(int argc, char *argv[])
 #endif
 	g_argc = argc;
 	g_argv = argv;
+#if defined(OF_PC) && defined(POCKET_PORT)
+    extern int pocket_render_music(void);
+    int render_status = pocket_render_music();
+    if (render_status) return render_status < 0 ? 1 : 0;
+#endif
 	pop_main();
 	return 0;
 }

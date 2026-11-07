@@ -412,6 +412,7 @@ int pop_wait(int timer_index,int time) {
 
 #ifdef POCKET_PORT
 #include "pocket_assets.h"
+#include "pocket_music.h"
 #endif
 static FILE* open_dat_from_root_or_data_dir(const char* filename) {
 #ifdef POCKET_PORT
@@ -2118,7 +2119,11 @@ void audio_callback(void* userdata, Uint8* stream_orig, int len_orig) {
 	// Note: music sounds and digi sounds are allowed to play simultaneously (will be blended together)
 	// I.e., digi sounds and music will not cut each other short.
 	if (midi_playing) {
+#if defined(POCKET_PORT) && !defined(OF_PC)
+        pocket_music_mix(stream, len);
+#else
 		midi_callback(userdata, stream, len);
+#endif
 	} else if (ogg_playing) {
 		ogg_callback(userdata, stream, len);
 	}

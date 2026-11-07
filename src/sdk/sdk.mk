@@ -269,6 +269,8 @@ endif
 PC_CC  ?= cc
 PC_CXX ?= c++
 SDL_CFLAGS := $(shell sdl2-config --cflags 2>/dev/null || pkg-config --cflags sdl2 2>/dev/null)
+# The SDL shim uses <SDL2/SDL.h>; Homebrew requires the parent include path.
+SDL_CFLAGS += $(shell sdl2-config --prefix 2>/dev/null | sed 's@^@-I@; s@$$@/include@')
 SDL_LIBS   := $(shell sdl2-config --libs 2>/dev/null || pkg-config --libs sdl2 2>/dev/null)
 
 # PC-side CFLAGS. Separate from SDK_CFLAGS because the host build uses

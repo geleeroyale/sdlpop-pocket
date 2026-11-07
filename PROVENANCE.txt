@@ -7,10 +7,6 @@ Commit a408ddc12aed0dfaa4aa22c06af82f829db77126. SDK code and bundled musl heade
 Prebuilt Pocket runtime: https://github.com/openfpgaOS/openfpgaCore
 Commit 618a3eb985759a4154115109c2c8036271252888, from the SDK runtime/MANIFEST. The repository uses submodules; obtain the exact source and pinned submodules when rebuilding the FPGA and runtime. Its NOTICE is included. These runtime binaries include third-party materials under their respective terms; review that NOTICE and applicable licenses before public distribution.
 
-The release binary excludes the SC-55 sample bank supplied by the SDK because the port synthesizes AdLib music and does not need that bank. No Prince of Persia game assets are included in this source release.
+The release binary excludes the SC-55 sample bank supplied by the SDK because the port uses pre-rendered user-provided game music and does not need that bank. No Prince of Persia game assets or rendered music are included in this source release.
 
 A separate openfpgaOS-core-source archive is supplied with the release candidate. It contains the checked-out runtime revision and its pinned submodule working trees, with Git administrative data and unused .ofsf sound-bank files omitted.
-
-Real-time music experiment: Nuked-OPL3-fast https://github.com/tgies/Nuked-OPL3-fast at commit f44bacb1143cd78d36bacf69fbec8c60a125b3c9, LGPL-2.1-or-later. Its license and source notices are included in src/sdlpop. This replaces the earlier Nuked OPL3 implementation in this branch.
-
-Pocket OPL experiment: DOSBox DBOPL C port from https://github.com/jerry9871/opl_mcu at commit 6a225e5ca5946fe1ad2ec2c279419956d1d6eb7e, GPL-2.0-or-later; see src/sdlpop/DBOPL-LICENSE.txt. The Pocket wrapper uses block generation; desktop retains Nuked-OPL3-fast.

@@ -36,7 +36,9 @@
  */
 
 #include <stdio.h>
+#ifndef OF_PC
 #include <sys/auxv.h>
+#endif
 
 #include "of_app_abi.h"
 #include "of_caps.h"
@@ -60,8 +62,10 @@ static void of_runtime_init(void) {
      * indicate a kernel/SDK ABI mismatch, but we deliberately do not
      * crash here so an app can still attempt to limp along on broken
      * boots. The first OF_SVC->... call will fault clearly enough. */
+#ifndef OF_PC
     _of_caps_ptr = (const struct of_capabilities *)getauxval(AT_OF_CAPS);
     _of_svc_ptr  = (const struct of_services_table *)getauxval(AT_OF_SVC);
+#endif
 
     setbuf(stdout, NULL);
 }
