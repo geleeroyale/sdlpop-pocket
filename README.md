@@ -1,5 +1,7 @@
 # SDLPoP Pocket source and user-data preparation
 
+> **Experimental branch:** Real-time music can distort or stutter during longer cues on the Pocket. The [main branch](https://github.com/geleeroyale/sdlpop-pocket/tree/main) uses locally pre-rendered music and is the tested, reliable version.
+
 This source includes the SDLPoP engine, user-data tool, and openfpgaOS SDK. You must provide your own compatible DOS game data. Music is synthesized in real time from that data.
 
 ## Prepare your game files
@@ -20,6 +22,6 @@ License and provenance details are in the included notice and license files and 
 
 ## Project status
 
-This port has been tested on an Analogue Pocket with a compatible DOS copy supplied by the player. It starts directly from openFPGA; movement, sound effects, music and in-game quicksave were tested. This branch plays AdLib music through a DOSBox-derived real-time OPL emulator. The DBOPL configuration without a pre-rendered music file has been tested on one Pocket; broader compatibility and full playthroughs remain unverified. It does not currently implement Pocket sleep or system save states.
+This port has been tested on an Analogue Pocket with a compatible DOS copy supplied by the player. It starts directly from openFPGA; movement, sound effects, music and in-game quicksave were tested. This branch plays AdLib music through a DOSBox-derived real-time OPL emulator. Testing on one Pocket found that real-time music may slow down or distort during long cues. It does not currently implement Pocket sleep or system save states.
 
 The repository deliberately omits game assets and the optional SC-55 sound bank. Review `openfpgaOS-core-NOTICE.txt` and upstream component licenses before distributing compiled runtime artifacts. See `PLAYING.md` and `PROVENANCE.txt` for details and credits.

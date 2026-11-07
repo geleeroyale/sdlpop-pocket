@@ -20,7 +20,7 @@ The internal core identifier remains `SDLPoP.experimental` for compatibility wit
 
 ## Status and credits
 
-Gameplay, text, effects and music were tested on one Analogue Pocket with one DOS data set. The game's AdLib music is synthesized in real time using a DOSBox-derived OPL emulator. The setup without a pre-rendered music file has been tested on one Pocket. Other game variants, full-length playthroughs, dock behavior, and all save paths have not been comprehensively tested. Optional PNG replacement assets, screenshots, and controller rumble are not supported.
+Gameplay, text, effects and music were tested on one Analogue Pocket with one DOS data set. This experimental branch synthesizes AdLib music in real time using a DOSBox-derived OPL emulator, but music can slow down or distort during long cues. For reliable audio, use the main branch and its locally pre-rendered music. Other game variants, full-length playthroughs, dock behavior, and all save paths have not been comprehensively tested. Optional PNG replacement assets, screenshots, and controller rumble are not supported.
 
 SDLPoP is by Dávid Nagy and contributors; it uses a DOSBox-derived DBOPL emulator on Pocket and Nuked OPL3 by Alexey Khokholov on desktop, along with other credited libraries. The hardware runtime and SDK are from openfpgaOS by ThinkElastic and contributors. See LICENSES and the accompanying source archive. This is an unofficial community port, not an Ubisoft or Analogue product.
 
