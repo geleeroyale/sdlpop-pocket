@@ -1,6 +1,6 @@
 # SDLPoP Pocket source and user-data preparation
 
-This source includes the SDLPoP engine, user-data tool, and openfpgaOS SDK. **You must own the game for DOS and supply the actual files for PoP.**
+This source includes the SDLPoP engine (https://github.com/NagyD/SDLPoP), user-data tool, and openfpgaOS SDK. **You must own the game for DOS and supply the actual files for PoP.**
 
 ## Prepare your game files
 
